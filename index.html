@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Stronger Semantic Encoders Can Harm Relighting Performance: Probing Visual Priors via Augmented Latent Intrinsics.">
+  <meta name="keywords" content="Relighting, Latent Intrinsics, Diffusion Models">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Probing Visual Priors via Augmented Latent Intrinsics</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="#">
+  <!-- Glide.js CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css">
+
+  <!-- Glide.js JavaScript -->
+  <!-- <script src="./scripts/carousel.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="./static/js/magnify.js"></script>
+
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .container {
+      max-width: 1200px; /* Adjust as needed */
+      margin: 0 auto; /* Centers the container horizontally */
+      padding: 20px; /* Optional: add padding for spacing */
+      display: block; /* Ensure it behaves as a block-level element */
+  }
+  
+    .image-container {
+        position: relative;
+        display: inline-block;
+        width: 300px;
+        height: 450px;
+        overflow: hidden;
+    }
+    .image-container img {
+        width: 100%;
+        height: auto;
+    }
+  </style>
+  
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Stronger Semantic Encoders Can Harm Relighting Performance: <br>
+            Probing Visual Priors via Augmented Latent Intrinsics</h1>
+          <h3 class="title is-5 publication-title">In Submission</h3>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://xyxingx.github.io">Xiaoyan Xing</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://xiao7199.github.io/">Xiao Zhang</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://karaoglusezer.github.io/">Sezer Karaoglu</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://staff.fnwi.uva.nl/th.gevers/">Theo Gevers</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://anandbhattad.github.io/">Anand Bhattad</a><sup>3</sup>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of Amsterdam</span>
+            <span class="author-block"><sup>2</sup>The University of Chicago</span>
+            <span class="author-block"><sup>3</sup>John Hopkins University</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video (Coming Soon)</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (soon)</span>
+                  </a>
+              </span>
+               <!-- <span class="link-block">
+                <a href="https://huggingface.co/spaces/xyxingx/LumiNet"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fa-solid fa-face-smiling-hands"></i>
+                  </span>
+                  <span>Demo (New!)</span>
+                  </a>
+              </span> -->
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+          <img src="./static/images/teaser.png" alt="Teaser figure" style="width: 100%;">
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <h2 class="subtitle has-text-left">
+          <b>Stronger Semantic Encoders Can Harm Relighting Performance.</b>
+          <br><b>Left:</b> Visual comparison on a scene with complex specular materials. The task is to relight the input image (top-left) using the target illumination (bottom-left), which requires moving specular highlights from left to right, as indicated by the chrome sphere. While features from semantic encoders (CLIP, DINO) fail to reproduce realistic highlights, the MAE plausibly moves the highlight but blurs fine details, such as text labels. Our method (top-right), which combines features from RADIO (a pretrained model; distilled from many vision encoders) with latent intrinsics, closely matches the ground truth.
+          <br><b>Right:</b> Quantitative analysis reveals a trade-off: for most encoders optimized for pure semantics, relighting quality (PSNR) is inversely correlated with recognition performance (ImageNet-1K linear probing as reported in the original papers). Our approach breaks this trend, achieving high performance on both tasks.
+        </h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>Image-to-image relighting requires representations that disentangle scene properties from illumination. Recent methods rely on latent intrinsic representations but remain under-constrained and often fail on challenging materials such as metal and glass. A natural hypothesis is that stronger pretrained visual priors should resolve these failures. We find the opposite: features from top-performing semantic encoders often degrade relighting quality, revealing a fundamental trade-off between semantic abstraction and photometric fidelity. We study this trade-off and introduce Augmented Latent Intrinsics (ALI), which balances semantic context and dense photometric structure by fusing features from a pixel-aligned visual encoder into a latent-intrinsic framework, together with a self-supervised refinement strategy to mitigate the scarcity of paired real-world data. Trained only on unlabeled real-world image pairs and paired with a dense, pixel-aligned visual prior, ALI achieves strong improvements in relighting, with the largest gains on complex, specular materials. </p>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="col-md-10 col-md-offset-1"> -->
+     
+    <!-- </div> -->
+    <!-- <script>
+      document.addEventListener('DOMContentLoaded', function () {
+          new Glide('#image-carousel', {
+              type: 'carousel',
+              perView: 1,
+              focusAt: 'center',
+              autoplay: false,
+              hoverpause: true
+          }).mount();
+      });
+  </script> -->
+  
+
+    <!-- <script>
+        // Initialize magnify for each image container
+        magnify("image1", 2); // Pass container ID and zoom level
+        magnify("image2", 2);
+    </script> -->
+
+    
+  
+  
+  
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video (Coming Soon)</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code></code></pre>
+  </div>
+</section> -->
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="#" class="external-link">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="#" class="external-link">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            The core code of this website is borrowed from <a
+            href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. 
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>
