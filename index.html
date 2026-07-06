@@ -32,6 +32,7 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/comparison.css?v=2">
   <link rel="icon" href="#">
   <!-- Glide.js CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
@@ -234,6 +235,67 @@
     <!--/ Paper video. -->
   </div>
 </section>
+
+
+
+<!-- Interactive backbone comparison. -->
+<section class="section" id="comparison">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">Interactive Comparison</h2>
+        <div class="content has-text-justified cmp-intro">
+          <p>
+            Here we show interactive relighting results driven by different visual features within our
+            Augmented Latent Intrinsics framework. The G-buffer&ndash;based method <b>RGBX</b> is included
+            as a reference. Pick a scene to compare, and use <b>Compare two</b> for a draggable
+            side-by-side of any pair. The bypass decoder is disabled for the best comparison.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- scene selector -->
+    <div class="cmp-scene-strip" id="cmp-scene-strip"></div>
+
+    <!-- mode tabs -->
+    <div class="tabs is-centered is-toggle is-small cmp-tabs">
+      <ul>
+        <li class="is-active" data-mode="grid"><a>All backbones</a></li>
+        <li data-mode="slider"><a>Compare two</a></li>
+      </ul>
+    </div>
+
+    <div id="cmp-caption" class="cmp-caption has-text-centered"></div>
+
+    <!-- grid view -->
+    <div id="cmp-grid" class="cmp-grid"></div>
+
+    <!-- one-on-one draggable view -->
+    <div id="cmp-slider" class="cmp-slider-wrap" style="display:none;">
+      <div class="cmp-slider-controls">
+        <div class="cmp-select">
+          <label>Left</label>
+          <div class="select is-small"><select id="cmp-sel-a"></select></div>
+        </div>
+        <div class="cmp-select">
+          <label>Right</label>
+          <div class="select is-small"><select id="cmp-sel-b"></select></div>
+        </div>
+      </div>
+      <div class="cmp-ba" id="cmp-ba">
+        <img class="cmp-ba-img" id="cmp-ba-b" alt="">
+        <img class="cmp-ba-img" id="cmp-ba-a" alt="">
+        <div class="cmp-ba-handle" id="cmp-ba-handle"></div>
+        <div class="cmp-ba-label cmp-ba-label-l" id="cmp-ba-label-a"></div>
+        <div class="cmp-ba-label cmp-ba-label-r" id="cmp-ba-label-b"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="./static/js/comparison-data.js?v=2"></script>
+<script src="./static/js/comparison.js?v=2"></script>
 
 
 
