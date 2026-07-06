@@ -2,6 +2,8 @@
 // Data (scenes) comes from comparison-data.js -> COMPARISON_SCENES.
 (function () {
   const METHODS = [
+    { key: 'input',  label: 'Input' },
+    { key: 'gt',     label: 'Ground Truth' },
     { key: 'ours',   label: 'Ours (RADIO)' },
     { key: 'rgbx',   label: 'RGBX' },
     { key: 'clip',   label: 'CLIP' },
@@ -12,9 +14,10 @@
   const BASE = './static/comparison/';
   const scenes = (typeof COMPARISON_SCENES !== 'undefined') ? COMPARISON_SCENES : [];
 
-  let cur = 0, mode = 'grid', selA = 'ours', selB = 'rgbx';
+  let cur = 0, mode = 'grid', selA = 'ours', selB = 'gt';
   const $ = id => document.getElementById(id);
-  const imgPath = (scene, key) => BASE + scene + '/' + key + '.jpg';
+  const IMG_V = '4'; // bump to force browsers to refetch images after asset changes
+  const imgPath = (scene, key) => BASE + scene + '/' + key + '.jpg?v=' + IMG_V;
   const labelOf = k => (METHODS.find(m => m.key === k) || {}).label || k;
 
   function buildStrip() {

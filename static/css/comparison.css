@@ -22,9 +22,9 @@
 .cmp-tabs { margin-top: 4px; margin-bottom: .5rem; }
 .cmp-caption { margin: 0 0 14px; color: #444; }
 
-/* grid view: our model + RGBX + 4 backbones */
-.cmp-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
-@media (max-width: 1024px) { .cmp-grid { grid-template-columns: repeat(3, 1fr); } }
+/* grid view: input + ground truth + our model + RGBX + 4 backbones */
+.cmp-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; }
+@media (max-width: 1024px) { .cmp-grid { grid-template-columns: repeat(4, 1fr); } }
 @media (max-width: 600px)  { .cmp-grid { grid-template-columns: repeat(2, 1fr); } }
 .cmp-cell { position: relative; border-radius: 8px; overflow: hidden; border: 1px solid #e6e6e6; }
 .cmp-cell img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: fill; }
